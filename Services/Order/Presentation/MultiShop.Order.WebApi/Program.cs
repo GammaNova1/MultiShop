@@ -1,9 +1,18 @@
+using Microsoft.Extensions.DependencyInjection.Extensions;
 using MultiShop.Order.Application.Features.CQRS.Handlers.AdressHandlers;
 using MultiShop.Order.Application.Features.CQRS.Handlers.OrderDetailHandlers;
+using MultiShop.Order.Application.Interfaces;
+using MultiShop.Order.Application.Services;
+using MultiShop.Order.Persistence.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+
+builder.Services.AddApplicationService(builder.Configuration);
+
 // Add services to the container.
+
 builder.Services.AddScoped<GetAdressByIdQueryHandler>();
 builder.Services.AddScoped<GetAdressQueryHandler>();
 builder.Services.AddScoped<CreateAdressCommandHandler>();
