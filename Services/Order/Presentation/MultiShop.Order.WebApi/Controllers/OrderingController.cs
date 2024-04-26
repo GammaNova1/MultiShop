@@ -36,7 +36,7 @@ namespace MultiShop.Order.WebApi.Controllers
             await _mediator.Send(command);
             return Ok("Sipariş başarıyla oluşturuldu");
         }
-        [HttpPost]
+        [HttpPut]
         public async Task<IActionResult> UpdateOrdering(UpdateOrderingCommand command)
         {
             await _mediator.Send(command);

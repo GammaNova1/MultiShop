@@ -38,6 +38,7 @@ namespace MultiShop.Order.WebApi.Controllers
             var values =await  _getAdressByIdQueryHandler.Handle(new GetAdressByIdQuery(id));
             return Ok(values);
         }
+        [HttpPost]
         public async Task<IActionResult> CreateAdress(CreateAdressCommand command)
         {
             await _createAdressCommandHandler.Handle(command);
